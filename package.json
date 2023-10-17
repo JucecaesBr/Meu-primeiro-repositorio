@@ -1,0 +1,22 @@
+{
+  "name": "testegit",
+  "version": "1.0.0",
+  "description": "Criando meu primeiro repositorio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JucecaesBr/Meu-primeiro-repositorio.git"
+  },
+  "author": "Julio Cesar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JucecaesBr/Meu-primeiro-repositorio/issues"
+  },
+  "homepage": "https://github.com/JucecaesBr/Meu-primeiro-repositorio#readme",
+  "dependencies": {
+    "mongoose": "^7.6.3"
+  }
+}
