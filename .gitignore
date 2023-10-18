@@ -65,7 +65,6 @@ web_modules/
 
 # Optional REPL history
 .node_repl_history
-
 # Output of 'npm pack'
 *.tgz
 
@@ -106,7 +105,7 @@ dist
 
 # Docusaurus cache and generated files
 .docusaurus
-
+mongo/
 # Serverless directories
 .serverless/
 
