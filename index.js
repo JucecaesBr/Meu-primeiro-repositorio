@@ -8,10 +8,16 @@ const Produto = mongoose.model ('Produto',
     preco: Number
 });
 
-const Produto1= new Produto(
-{
-    CodigoDebarras: '912873987LC',
-    nome:"arroz",
-    preco: 10
-})
-Produto1.save().then(console.log('Produto Registrado'))
+// const Produto1= new Produto(
+// {
+//     CodigoDebarras: '777BRO',
+//     nome:"Carne",
+//     preco: 22.30
+// })
+// Produto1.save()
+
+async function exibeProdutos(){
+        console.log(await Produto.find())
+}
+
+exibeProdutos()
