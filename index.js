@@ -1,49 +1,75 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/test');
 
-const Carro = mongoose.model ('Carro',
+const Produto = mongoose.model ('Produto',
 {
-    placa:String,
-    modelo:String,
-    anofab:Number,
-    restricao:Boolean
+    nome:String,
+    codigo:Number,
+    preco:Number,
+    estoque:Number
 });
 
-// Carro.create({
-//     placa:'45hf23',
-//     modelo:'BMW',
-//     anofab:2019,
-//     restricao:true
-// });
+const produtos = [
+    {nome: "File", codigo: 1421, preco: 28.99, estoque:90},
+    {nome: "Sabonete", codigo: 7432, preco: 8.12, estoque:400},
+    {nome: "CoCa-Cola", codigo: 83411, preco: 15.00, estoque:325}
+]
 
-async function exibeCarro(){
-    console.log(await Carro.find())
-    console.log('----------------------------------------------')
+// async function produtoCriar(produto){
+//     const tamanho = produto.length;
+//     console.log(tamanho)
+//     for(cont=0;cont<=tamanho;cont++){
+//         await Produto.create(produto[cont])
+//     }
+// }
 
+let prod = []
+
+const listaProduto = async () => {
+    prod = await Produto.find()
+    console.log(prod[0])
 }
 
-async function exibirCarroAno(ano){
-    console.log(await Carro.findOne({anofab:ano}))
+const criaInfinito = async () => {
+    for(let i = 0; i<Infinity; i++){
+        console.log(await Produto.create({
+            nome: "Oi",
+            codigo: i,
+            preco: 1,
+            estoque: 0
+        }))
+    }
+}
+// criaInfinito()
+
+const deletaTodosOsProdutos = async () => {
+    prod = await Produto.find()
+    
+    for(let i = 0; i<Infinity; i++){
+        console.log(await Produto.findOneAndDelete({nome: prod[i].nome}))
+    }
 }
 
+deletaTodosOsProdutos()
+
+listaProduto()
+
+// async function outroProdutoCriado(produto){
+//     let lista=0
+
+//     let limite
+//     console.log("Digite o Limite")
+//     process.stdin.on('data', data => {
+//         limite = data
+//         process.exit();
+//       });
+    
+//     while(lista<=limite-1){
+//         await Produto.create(produto[lista])
+//         lista++    
+//     }
+// }
+
+// outroProdutoCriado(produtos)
 
 
- async function main () {
-     await exibeCarro()
-     exibirCarroAno(2010)
-
-}
-// main()
-async function atualizarCarro(x){
-    console.log(await Carro.findOneAndUpdate(
-        {placa:x},
-        {restricao:false}))
-}
-
-// atualizarCarro('45hf23')
-
-async function deletaCarro(y){
-    console.log(await Carro.findOneAndDelete({placa:y}) )
-}
-
-deletaCarro('437d3ss')
