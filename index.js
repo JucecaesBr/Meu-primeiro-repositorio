@@ -12,64 +12,90 @@ const Produto = mongoose.model ('Produto',
 const produtos = [
     {nome: "File", codigo: 1421, preco: 28.99, estoque:90},
     {nome: "Sabonete", codigo: 7432, preco: 8.12, estoque:400},
-    {nome: "CoCa-Cola", codigo: 83411, preco: 15.00, estoque:325}
+    {nome: "CoCa-Cola", codigo: 83411, preco: 15.00, estoque:325},
+    {nome: "Arroz", codigo:3823, preco:16.50, estoque:984}
 ]
 
-// async function produtoCriar(produto){
-//     const tamanho = produto.length;
-//     console.log(tamanho)
-//     for(cont=0;cont<=tamanho;cont++){
-//         await Produto.create(produto[cont])
-//     }
-// }
 
-let prod = []
+
+
+async function produtoCriar(produtos){
+    const tamanho = produtos.length;
+    console.log(tamanho)
+    for(cont=0;cont<=tamanho;cont++){
+        await Produto.create(produtos[cont])
+    }
+}
+
+
+
 
 const listaProduto = async () => {
-    prod = await Produto.find()
-    console.log(prod[0])
+    console.log( await Produto.find())
 }
-
-const criaInfinito = async () => {
-    for(let i = 0; i<Infinity; i++){
-        console.log(await Produto.create({
-            nome: "Oi",
-            codigo: i,
-            preco: 1,
-            estoque: 0
-        }))
-    }
-}
-// criaInfinito()
-
-const deletaTodosOsProdutos = async () => {
-    prod = await Produto.find()
-    
-    for(let i = 0; i<Infinity; i++){
-        console.log(await Produto.findOneAndDelete({nome: prod[i].nome}))
-    }
-}
-
-deletaTodosOsProdutos()
-
 listaProduto()
 
-// async function outroProdutoCriado(produto){
-//     let lista=0
+listaProduto()
+async function deletarUmProduto(){
+        for(let i = 0; i<100; i++){
+           console.log(await Produto.findOneAndDelete())
+        }
+}
 
-//     let limite
-//     console.log("Digite o Limite")
-//     process.stdin.on('data', data => {
-//         limite = data
-//         process.exit();
-//       });
-    
-//     while(lista<=limite-1){
-//         await Produto.create(produto[lista])
-//         lista++    
+
+deletarUmProduto()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const criaInfinito = async () => {
+//     for(let i = 0; i<Infinity; i++){
+//         console.log(await Produto.create({
+//             nome: "Oi",
+//             codigo: i,
+//             preco: 1,
+//             estoque: 0
+//         }))
 //     }
 // }
 
-// outroProdutoCriado(produtos)
+// const deletaTodosOsProdutos = async () => {
+//     prod = await Produto.find()
+    
+//     for(let i = 0; i<Infinity; i++){
+//         console.log(await Produto.findOneAndDelete({nome: prod[i].nome}))
+//     }
+// }
+
+
+
+
+
 
 
